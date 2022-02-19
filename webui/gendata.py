@@ -104,9 +104,11 @@ if __name__ == "__main__":
         out_light = get_lightvec(device, lightmodel, faceimg)
         lights[i,:,:,:,:] = out_light.detach().cpu().numpy()
 
-        faceimg = cv.resize(faceimg, (224,224))
-        faceimg = faceimg[..., ::-1]  # RGB
-        faceimg = transforms.ToPILImage()(faceimg)
+        # xxx: accuracy of age and eyeglasses is very poor
+        #faceimg = cv.resize(faceimg, (224,224))
+        #faceimg = faceimg[..., ::-1]  # RGB
+        #faceimg = transforms.ToPILImage()(faceimg)
+        faceimg = faceimg.resize((224,224))
         faceimg = faceattr_trans(faceimg)
         inputs = torch.unsqueeze(faceimg, 0).float().to(device)
 
