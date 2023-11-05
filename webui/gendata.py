@@ -153,7 +153,7 @@ if __name__ == "__main__":
             faceattr_arr[i,4,0] = 0.5
             faceattr_arr[i,5,0] = 0.5
             faceattr_arr[i,6,0] = min(age_out[0],65)
-            faceattr_arr[i,7,0] = 0. if glasses == 'none' else 1.
+            faceattr_arr[i,7,0] = name2idx(expression)
 
     np.save("./data/dlatents.npy", dlatents_arr)
     np.save("./data/attributes.npy", faceattr_arr)
